@@ -1,0 +1,81 @@
+import csv
+
+ 
+
+class Customer:  
+
+ 
+
+    def __init__(self, id_customer, name, address):
+
+        self.id_customer = id_customer
+
+        self.name = name
+
+        self.address = address
+
+ 
+
+ 
+
+def load_csv():
+
+  with open('customers.csv', newline='') as f:
+
+    reader = csv.reader(f)
+
+    data = list(reader)
+
+ 
+
+    customers = []
+
+    for customer in data:
+
+        customers.append(Customer(customer[0],customer[1],customer[2])) 
+
+    return customers
+
+ 
+
+def add_customer(id_customer,name,address):
+
+    customers.append(Customer(id_customer,name,address))
+
+ 
+
+def get_customer_by_id(id_customer):
+
+     for customer in customers:
+
+        if(customer.id_customer == id_customer):
+
+            return customer
+
+ 
+
+def display_customers():
+
+    for c in customers:
+
+        print(c.id_customer,c.name,c.address)
+
+     
+
+customers = load_csv()
+
+ 
+
+display_customers()
+
+     
+
+add_customer(4,"Test,","Bal")
+
+ 
+
+display_customers()
+
+ 
+
+print("Customer with id 4 is :", get_customer_by_id(4).name)
